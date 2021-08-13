@@ -18,7 +18,7 @@ class Auth extends Component {
                     type: 'email',
                     placeholder: 'Mail Address'
                 },
-                value: '',
+                value: 'test@gmail.com',
                 validation: {
                     required: true,
                     isEmail: true
@@ -32,7 +32,7 @@ class Auth extends Component {
                     type: 'password',
                     placeholder: 'Password'
                 },
-                value: '',
+                value: '123456',
                 validation: {
                     required: true,
                     minLength: 6
