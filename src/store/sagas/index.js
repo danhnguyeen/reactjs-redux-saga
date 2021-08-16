@@ -1,4 +1,4 @@
-import { takeEvery } from "@redux-saga/core/effects";
+import { takeEvery, all, takeLatest } from "@redux-saga/core/effects";
 import {
   logoutSaga,
   checkAuthTimeoutSaga,
@@ -22,6 +22,8 @@ export function* watchBurgerBuilder() {
 }
 
 export function* watchOrder() {
-  yield takeEvery(actionTypes.PURCHASE_BURGER_REQUEST, purchaseBurgerSaga);
-  yield takeEvery(actionTypes.FETCH_ORDERS_REQUEST, fetchOrdersSaga);
+  yield all([
+    takeEvery(actionTypes.PURCHASE_BURGER_REQUEST, purchaseBurgerSaga),
+    takeLatest(actionTypes.FETCH_ORDERS_REQUEST, fetchOrdersSaga),
+  ]);
 }
