@@ -5,6 +5,7 @@ import {
   authUserSaga,
   authCheckStateSaga,
 } from "./auth";
+import { initIngredientsSaga } from "./burgerBuilder";
 import * as actionTypes from "../actions/actionTypes";
 
 // listen and execute logoutSaga
@@ -13,4 +14,8 @@ export function* watchAuth() {
   yield takeEvery(actionTypes.AUTH_CHECK_TIMEOUT_ASYNC, checkAuthTimeoutSaga);
   yield takeEvery(actionTypes.AUTH_REQUEST, authUserSaga);
   yield takeEvery(actionTypes.AUTH_CHECK_REQUEST, authCheckStateSaga);
+}
+
+export function* watchBurgerBuilder() {
+  yield takeEvery(actionTypes.INITIAL_INGREDIENT, initIngredientsSaga);
 }
